@@ -3,6 +3,10 @@
   --bm-fondo: #2e2f2f;
   --bm-texto: #1b2530;
   --bm-text: rgb(239, 75, 4);
+
+  /* Tipografía de ferretería: Barlow (texto) y Barlow Condensed (títulos y marca) */
+  --bm-font-texto: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --bm-font-titulo: "Barlow Condensed", "Arial Narrow", "Segoe UI", system-ui, sans-serif;
 }
 
 *,
@@ -17,7 +21,27 @@ html {
 
 body {
   margin: 0;
-  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  font-family: var(--bm-font-texto);
+  font-size: 1rem;
+  line-height: 1.5;
   background: var(--bm-fondo);
   color: var(--bm-texto);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Títulos: condensados, peso fuerte, interlineado corto y tracking negativo a mayor tamaño */
+h1,
+h2,
+h3 {
+  font-family: var(--bm-font-titulo);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
