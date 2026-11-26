@@ -60,7 +60,11 @@
   border-radius: 20px;
   overflow: hidden;
   background: #2a2b2b;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+  /* Sombra en capas: borde de luz, sombra cercana y sombra profunda */
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 12px 24px rgba(0, 0, 0, 0.45),
+    0 40px 80px rgba(0, 0, 0, 0.6);
   will-change: transform, opacity;
 
   img {
