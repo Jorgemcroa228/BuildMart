@@ -39,9 +39,11 @@
 
   h1 {
     margin: 0;
-    font-size: clamp(2.8rem, 9vw, 6rem);
+    font-size: clamp(3.4rem, 12vw, 8rem);
     font-weight: 800;
-    letter-spacing: 1px;
+    line-height: 0.95;
+    /* Tracking negativo: a mayor tamaño, letras más juntas */
+    letter-spacing: -0.02em;
     text-shadow: 0 6px 29px rgb(0, 0, 0);
 
     span {

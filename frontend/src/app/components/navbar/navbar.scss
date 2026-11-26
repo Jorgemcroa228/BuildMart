@@ -25,9 +25,11 @@
 }
 
 .navbar__brand {
-  font-size: 1.6rem;
+  font-family: var(--bm-font-titulo);
+  font-size: 1.9rem;
   font-weight: 800;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.01em;
+  line-height: 1;
   color: #fff;
   text-decoration: none;
   text-shadow: 0 4px 24px rgb(0, 0, 0);
