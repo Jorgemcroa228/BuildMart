@@ -1,0 +1,101 @@
+<section class="login">
+  <div class="login__card">
+    <header class="login__header">
+      <a routerLink="/" class="login__brand">Build<span>Mart</span></a>
+      <h1>Iniciar sesión</h1>
+      <p>Ingresa con tu correo para continuar con tus compras.</p>
+    </header>
+
+    @if (error()) {
+      <div class="login__alerta" role="alert">{{ error() }}</div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="enviar()" novalidate>
+      <div class="campo" [class.campo--error]="invalido('correo')">
+        <label for="correo">Correo electrónico</label>
+        <input
+          id="correo"
+          type="email"
+          formControlName="correo"
+          autocomplete="email"
+          placeholder="tucorreo@ejemplo.com"
+          [attr.aria-invalid]="invalido('correo')"
+          aria-describedby="correo-error"
+        />
+        @if (invalido('correo')) {
+          <small id="correo-error">
+            @if (form.controls.correo.hasError('required')) {
+              El correo es obligatorio.
+            } @else {
+              Ingresa un correo válido.
+            }
+          </small>
+        }
+      </div>
+
+      <div class="campo" [class.campo--error]="invalido('password')">
+        <div class="campo__fila">
+          <label for="password">Contraseña</label>
+          <a routerLink="/recuperar-password" class="login__link login__link--sm">¿Olvidaste tu contraseña?</a>
+        </div>
+        <div class="campo__password">
+          <input
+            id="password"
+            [type]="verPassword() ? 'text' : 'password'"
+            formControlName="password"
+            autocomplete="current-password"
+            placeholder="••••••••"
+            [attr.aria-invalid]="invalido('password')"
+            aria-describedby="password-error"
+          />
+          <button
+            type="button"
+            class="campo__ojo"
+            (click)="verPassword.set(!verPassword())"
+            [attr.aria-label]="verPassword() ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+            [attr.aria-pressed]="verPassword()"
+          >
+            @if (verPassword()) {
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M2.1 3.5 3.5 2.1l18.4 18.4-1.4 1.4-3.2-3.2A10.8 10.8 0 0 1 12 20C6.5 20 2.7 15.9 1 12c.8-1.8 2-3.6 3.6-5L2.1 3.5ZM7.5 8.9 6 7.4A10.6 10.6 0 0 0 3.2 12c1.5 3 4.6 6 8.8 6 1.3 0 2.5-.3 3.6-.8l-1.7-1.7a4 4 0 0 1-5.4-5.4l-1-1.2Zm4.5-4.9c5.5 0 9.3 4.1 11 8a12 12 0 0 1-3.3 4.4l-1.4-1.4c1-.9 1.9-1.9 2.5-3-1.5-3-4.6-6-8.8-6-.8 0-1.6.1-2.3.3L8.1 4.7C9.3 4.2 10.6 4 12 4Zm0 4a4 4 0 0 1 4 4v.3L11.7 8H12Z"/>
+              </svg>
+            } @else {
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M12 4c5.5 0 9.3 4.1 11 8-1.7 3.9-5.5 8-11 8S2.7 15.9 1 12c1.7-3.9 5.5-8 11-8Zm0 2c-4.2 0-7.3 3-8.8 6 1.5 3 4.6 6 8.8 6s7.3-3 8.8-6c-1.5-3-4.6-6-8.8-6Zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+              </svg>
+            }
+          </button>
+        </div>
+        @if (invalido('password')) {
+          <small id="password-error">
+            @if (form.controls.password.hasError('required')) {
+              La contraseña es obligatoria.
+            } @else {
+              Debe tener al menos 8 caracteres.
+            }
+          </small>
+        }
+      </div>
+
+      <label class="check">
+        <input type="checkbox" formControlName="recordar" />
+        <span>Mantener sesión iniciada</span>
+      </label>
+
+      <button type="submit" class="login__submit" [disabled]="cargando()">
+        @if (cargando()) {
+          <span class="spinner" aria-hidden="true"></span> Ingresando…
+        } @else {
+          Iniciar sesión
+        }
+      </button>
+    </form>
+
+    <p class="login__pie">
+      ¿No tienes una cuenta?
+      <a routerLink="/registro" class="login__link">Regístrate</a>
+    </p>
+  </div>
+</section>

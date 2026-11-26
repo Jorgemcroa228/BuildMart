@@ -1,0 +1,87 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  /* Fondo de respaldo mientras carga o si no hay video */
+  background: radial-gradient(circle at 30% 30%, #2b3a48, #0f1720 70%);
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Lienzo oscuro sobre el video: sube --oscuridad para oscurecer más (0 = nada, 1 = negro) */
+.hero__overlay {
+  --oscuridad: 0.6;
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.35) 100%),
+    rgba(0, 0, 0, var(--oscuridad));
+}
+
+.hero__contenido {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 16px;
+  color: #fff;
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.8rem, 9vw, 6rem);
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 0 6px 29px rgb(0, 0, 0);
+
+    span {
+      color: rgb(239, 65, 1)
+    }
+  }
+}
+
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  width: 26px;
+  height: 42px;
+  margin-left: -13px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    width: 4px;
+    height: 8px;
+    margin-left: -2px;
+    border-radius: 2px;
+    background: #fff;
+    animation: rueda 1.6s infinite;
+  }
+}
+
+@keyframes rueda {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}

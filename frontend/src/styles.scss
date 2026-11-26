@@ -1,0 +1,23 @@
+:root {
+  --bm-acento: #2fb3c4;
+  --bm-fondo: #2e2f2f;
+  --bm-texto: #1b2530;
+  --bm-text: rgb(239, 75, 4);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bm-fondo);
+  color: var(--bm-texto);
+}

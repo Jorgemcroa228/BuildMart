@@ -1,0 +1,157 @@
+.navbar {
+  /* Fijo arriba para que acompañe el scroll; z-index por encima de todo */
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px clamp(16px, 4vw, 48px);
+  background: rgba(15, 23, 32, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
+
+  /* Oculto al cargar */
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+.navbar__brand {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 4px 24px rgb(0, 0, 0);
+
+  span {
+    color: rgb(233, 62, 0);
+  }
+}
+
+.navbar__acciones {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2vw, 24px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  color: #e6edf3;
+  text-decoration: none;
+  font-weight: 500;
+  text-shadow: 0 4px 24px rgb(0, 0, 0);
+
+  &:hover {
+    color: var(--bm-acento);
+  }
+}
+
+/* Estilo basado en "slippery-jellyfish-67" de cssbuttons.io (Uiverse, licencia MIT) */
+.navbar__btn {
+  --color: var(--bm-acento);
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0 1.1em;
+  height: 2.4em;
+  line-height: 2.2em;
+  border: 2px solid var(--color);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.5s;
+
+  /* Círculo que entra desde la esquina inferior derecha al pasar el mouse */
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 100%;
+    left: 100%;
+    width: 220px;
+    height: 150px;
+    border-radius: 50%;
+    background: var(--color);
+    transition: all 0.7s;
+  }
+
+  &:hover {
+    color: #0f1720;
+  }
+
+  &:hover::before {
+    top: -30px;
+    left: -30px;
+  }
+
+  &:active::before {
+    background: #1f8a98;
+    transition: background 0s;
+  }
+}
+
+.navbar__usuario {
+  color: #e6edf3;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.navbar__carrito {
+  position: relative;
+  display: inline-flex;
+  color: #fff;
+  text-shadow: 0 4px 24px rgb(0, 0, 0);
+
+  &:hover {
+    color: rgb(231, 62, 1);
+  }
+}
+
+.navbar__badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #e5484d;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 480px) {
+  .navbar__brand {
+    font-size: 1.25rem;
+  }
+
+  .navbar__link,
+  .navbar__btn {
+    font-size: 0.85rem;
+  }
+
+  .navbar__btn {
+    padding: 0 0.8em;
+  }
+}

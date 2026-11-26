@@ -1,0 +1,24 @@
+<nav class="navbar" [class.navbar--visible]="visible()" [attr.aria-hidden]="!visible()">
+  <a routerLink="/" class="navbar__brand">Build<span>Mart</span></a>
+
+  <ul class="navbar__acciones">
+    @if (auth.usuario(); as usuario) {
+      <li><span class="navbar__usuario">Hola, {{ usuario.nombre.split(' ')[0] }}</span></li>
+      <li><button type="button" class="navbar__btn" (click)="cerrarSesion()">Cerrar sesión</button></li>
+    } @else {
+      <li><a routerLink="/registro" class="navbar__link">Registrarse</a></li>
+      <li><a routerLink="/login" class="navbar__btn">Iniciar sesión</a></li>
+    }
+    <li>
+      <a routerLink="/carrito" class="navbar__carrito" aria-label="Carrito de compras">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+          <path fill="currentColor"
+            d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM7.2 14.8h9.9c.8 0 1.4-.4 1.8-1.1L22 7H6.2L5.3 5H2v2h2l3.6 7.6-1.4 2.4H19v-2H7.4l-.2-.2Z"/>
+        </svg>
+        @if (cantidadCarrito() > 0) {
+          <span class="navbar__badge">{{ cantidadCarrito() }}</span>
+        }
+      </a>
+    </li>
+  </ul>
+</nav>
