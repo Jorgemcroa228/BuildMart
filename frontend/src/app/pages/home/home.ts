@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
+import { GaleriaEspiral } from '../../components/galeria-espiral/galeria-espiral';
 import { HeroVideo } from '../../components/hero-video/hero-video';
 
 @Component({
   selector: 'app-home',
-  imports: [HeroVideo],
+  imports: [HeroVideo, GaleriaEspiral],
   template: `
     <app-hero-video />
+    <app-galeria-espiral />
     <!-- Próximas partes: catálogo, buscador, etc. -->
     <section class="proximamente">
       <h2>Catálogo</h2>
@@ -13,7 +15,7 @@ import { HeroVideo } from '../../components/hero-video/hero-video';
     </section>
   `,
   styles: `
-    .proximamente { min-height: 60vh; padding: 64px 16px; text-align: center; }
+    .proximamente { min-height: 60vh; padding: 64px 16px; text-align: center; color: #e6edf3; }
   `,
 })
 export class Home {}

@@ -1,0 +1,22 @@
+<section class="espiral" aria-labelledby="espiral-titulo">
+  <header class="espiral__encabezado">
+    <p class="espiral__eyebrow">Nuestros espacios</p>
+    <h2 id="espiral-titulo">Todo para tu baño, cocina y obra</h2>
+  </header>
+
+  <div class="espiral__lista">
+    @for (e of espacios; track e.src; let i = $index, par = $even) {
+      <article #fila class="fila" [class.fila--izquierda]="par" [class.fila--derecha]="!par">
+        <figure class="espiral__tarjeta">
+          <img [src]="e.src" [alt]="e.titulo" loading="lazy" decoding="async" />
+        </figure>
+
+        <div class="fila__texto">
+          <span class="fila__numero">0{{ i + 1 }}</span>
+          <h3>{{ e.titulo }}</h3>
+          <p>{{ e.descripcion }}</p>
+        </div>
+      </article>
+    }
+  </div>
+</section>
