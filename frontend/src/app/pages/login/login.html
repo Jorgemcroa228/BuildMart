@@ -1,8 +1,14 @@
 <section class="login">
-  <div class="login__card">
+  <div class="login__card" [class.login__card--sacudir]="sacudir()">
     <header class="login__header">
       <a routerLink="/" class="login__brand">Build<span>Mart</span></a>
-      <h1>Iniciar sesión</h1>
+
+      <nav class="segmento" aria-label="Acceso a tu cuenta">
+        <a routerLink="/login" class="segmento__op segmento__op--activa" aria-current="page">Iniciar sesión</a>
+        <a routerLink="/registro" class="segmento__op">Registrarse</a>
+      </nav>
+
+      <h1>Bienvenido de nuevo</h1>
       <p>Ingresa con tu correo para continuar con tus compras.</p>
     </header>
 
@@ -80,8 +86,8 @@
       </div>
 
       <label class="check">
-        <input type="checkbox" formControlName="recordar" />
         <span>Mantener sesión iniciada</span>
+        <input type="checkbox" role="switch" class="interruptor" formControlName="recordar" />
       </label>
 
       <button type="submit" class="login__submit" [disabled]="cargando()">

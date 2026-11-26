@@ -25,6 +25,8 @@ export class Login {
   protected readonly cargando = signal(false);
   protected readonly error = signal<string | null>(null);
   protected readonly verPassword = signal(false);
+  /** Sacudida horizontal de la tarjeta cuando el inicio de sesión falla (como en macOS) */
+  protected readonly sacudir = signal(false);
 
   /** Muestra el error de un campo solo después de que el usuario lo tocó o intentó enviar */
   protected invalido(campo: 'correo' | 'password'): boolean {
@@ -54,6 +56,8 @@ export class Login {
         error: (e: Error) => {
           this.error.set(e.message);
           this.form.controls.password.reset();
+          this.sacudir.set(true);
+          setTimeout(() => this.sacudir.set(false), 450);
         },
       });
   }
