@@ -17,33 +17,35 @@
 
 .campo select {
   width: 100%;
-  height: 46px;
-  padding: 0 38px 0 14px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  height: 50px;
+  padding: 0 40px 0 16px;
+  border-radius: 12px;
+  border: 1px solid var(--linea);
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%239aa7b4' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")
-      no-repeat right 10px center / 20px,
-    rgba(255, 255, 255, 0.05);
-  color: #fff;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23b8b8c2' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")
+      no-repeat right 12px center / 20px,
+    var(--relleno-campo);
+  color: var(--texto-primario);
   font: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem;
   appearance: none;
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.15s ease-out,
+    box-shadow 0.15s ease-out;
 
   &:focus {
     outline: none;
     border-color: var(--bm-acento);
-    box-shadow: 0 0 0 3px rgba(47, 179, 196, 0.25);
+    box-shadow: 0 0 0 4px rgba(47, 179, 196, 0.28);
   }
 
   option {
-    background: #0f1720;
+    background: #1e1f1f;
     color: #fff;
   }
 }
 
 .campo--error select {
-  border-color: #e5484d;
+  border-color: rgba(255, 107, 107, 0.7);
 }
